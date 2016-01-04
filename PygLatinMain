@@ -1,46 +1,17 @@
-pyg = 'ay'
+print "What would you like to translate?"
+sentence = raw_input("> ").lower()
+sentence_list = sentence.split(" ")
 
-original = raw_input('Enter a word:')
-word = original.lower()
+final_sentence = ""
+for word in sentence_list:
+	final_word = ""
+	if (word[0] == "t" and word[1] == "h") or (word[0] == "s" and word[1] == "h") or (word[0] == "c" and word[1] == "h") or (word[0] == "w" and word[1] == "h"):
+		first = word[0:2]
+		middle = word[2:len(word)]
+	else:
+		first = word[0]
+		middle = word[1:len(word)]
+	final_word +=middle + first + "ay "
+	final_sentence += final_word
 
-ch = False
-sh = False
-th = False
-wh = False
-
-if word[0] == "c" and word[1] == "h":
-    ch = True
-else:
-    ch = False
-    
-if word[0] == "s" and word[1] == "h":
-    sh = True
-else:
-    sh = False
-
-if word[0] == "t" and word[1] == "h":
-    th = True
-else:
-    th = False
-    
-if word[0] == "w" and word[1] == "h":
-    wh = True
-else:
-    wh = False
-
-if ch or sh or th or wh:
-    first = word[0:2]
-else:
-    first = word[0]
-
-new_word = word + first + pyg
-
-if ch or sh or th or wh:
-    new_word = new_word[2:len(new_word)]
-else:
-    new_word = new_word[1:len(new_word)]
-
-if len(original) > 0 and original.isalpha():
-    print "Translation: " + new_word
-else:
-    print "I can't translate that"
+print final_sentence
